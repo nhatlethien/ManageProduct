@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+	
+        <section class="row"  layout:fragment="content">
+                <div class="col-6 offset-3 mt-4">
+                    <form th:action="@{/admin/accounts/saveOrUpdate}"  method="post" th:object="${account}">
+                        <div class="card">
+                            <div class="card-header"style="background-color: rgb(244, 250, 162);">
+                                <h2 th:text="${account.isEdit? 'Edit Account' : 'Add new account'}">Add new account</h2>
+                            </div>
+                            <div class="card-body">
+
+                                <input type="hidden" th:field="*{isEdit}">
+
+                              <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text"
+                                    class="form-control" name="username" id="username" th:field="*{username}"
+                                    aria-describedby="usernameHid" placeholder="Username">
+                                <small id="usernameHid"
+                                th:if="${#fields.hasErrors('username')}"
+                                class="invalid-feedback">Username is valid</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password"
+                                    class="form-control" name="password" id="password" th:field="*{password}"
+                                    aria-describedby="passwordHid" placeholder="Password">
+                                    <small id="passwordHid" 
+                                    th:if="${#fields.hasErrors('password')}"
+                                    class="invalid-feedback">Password is valid</small>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="rememberMe" id="rememberMe" value="true" >
+                                    Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <a th:href="@{/admin/accounts}" class="btn btn-success">List account</a>
+                                <button class="btn btn-primary"> <i class="fas fa-save"></i>
+                                	<span th:if="${account.isEdit}">Update</span>
+                                	<span th:if="${!account.isEdit}">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </section>
+
+      </body>
+</html>

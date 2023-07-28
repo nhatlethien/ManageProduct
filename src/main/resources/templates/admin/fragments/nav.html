@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+</head>
+
+<body>
+    <div th:fragment="nav">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light" style="border-radius: 5px;">
+            <a class="navbar-brand" href="#">IT-Shop</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/admin/categories/layout}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/admin/categories/add}">Add Category</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/admin/categories/search}">List Category</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/admin/products/add}">Add Product</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/admin/products}">List Product</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/admin/accounts}">User list</a>
+                    <a class="dropdown-item" th:href="@{/admin/accounts/add}">Add user</a>
+                    
+                </li>
+
+                
+                
+              </ul>
+              <form th:action="@{/logout}" method="post" style="margin-right: 15px;">
+                <button class="btn btn-primary" type="submit">Đăng xuất</button>
+              </form>
+
+              <form action="" method="post">
+                <button class="btn btn-primary" type="submit">Đăng kí</button>
+              </form>
+            </div>
+          </nav>
+    </div>
+</body>
+</html>
